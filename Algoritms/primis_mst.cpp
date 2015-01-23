@@ -1,17 +1,10 @@
 #include <iostream>
 #include <limits.h>
-#define V 5
 using namespace std;
 
 int main()
 {
-	int a[V][V] = {{0, 2, 0, 6, 0},
-                      {2, 0, 3, 8, 5},
-                      {0, 3, 0, 0, 7},
-                      {6, 8, 0, 0, 9},
-                      {0, 5, 7, 9, 0},
-                     };
-
+	int a[100][100];
 	int dis[100];
 	int source[100];
 	int edges;
@@ -21,9 +14,8 @@ int main()
 
 	count = 0;
 	cost = 0;
-	edges = 5;
-//	cin >> edges;
-/*
+	cin >> edges;
+
 	for (int i = 0; i < edges; i++) {
 		for (int j = 0; j < edges; j++) {
 			cin >> a[i][j];
@@ -31,7 +23,7 @@ int main()
 
 	}
 
-*/
+
 	for (int i = 0; i < edges; i++) {
 		dis[i] = INT_MAX;
 	}
