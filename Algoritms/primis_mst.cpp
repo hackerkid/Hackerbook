@@ -17,7 +17,7 @@ int main()
 	int edges;
 	int inTree[100];
 	int cost;
-	bool count;
+	int count;
 
 	count = 0;
 	cost = 0;
@@ -45,10 +45,7 @@ int main()
 	}
 
 
-	dis[0] = 0;
-	inTree[0] = 1;
-	count = 1;
-
+/*
 	for (int i = 1; i < edges; i++) {
 		if(a[1][i] != 0 ) {
 			dis[i] = a[1][i];
@@ -56,33 +53,40 @@ int main()
 		}
 
 	}
+*/
 
+	count = 0;
 	int min;
-	while(count != edges) {
+	int temp = 0;
+	int val;
+	dis[0] = 0;
+
+	while(count < edges) {
 		min = INT_MAX;
-		int val;
-		for (int i = 1; i < edges; i++) {
-			if(inTree[i] == 0 and dis[i] < min) {
+		for (int i = 0; i < edges; i++) {
+			if(inTree[i] == 0 and dis[i] < min ) {
 				min = dis[i];
 				val = i;
+				temp++;
 			}
 
 		}
 		
 		if(min == INT_MAX) {
+			
 			cout << "MST NOT POSSIBLE|N"<<endl;
 			return 0;
 		}
 
-		
+
 		count++;
 		inTree[val] = 1;
 		dis[val] = min;
-		cost += dis[val];
+		cost += min;
 
 		
 		for (int i = 0; i < edges; i++) {
-			if(a[val][i] != 0) {
+			if(a[val][i] != 0 and inTree[i] != 1) {
 				if(a[val][i] < dis[i]) {
 					source[i] = val;
 					dis[i] = a[val][i];
@@ -96,7 +100,8 @@ int main()
 
 	}
 
-	cout << count;
+	cout << cost << endl;
+
 
 
 
